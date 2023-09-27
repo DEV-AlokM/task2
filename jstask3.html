@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        /* Center the container horizontally and vertically */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style the calculator container */
+        #calculator-container {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator-container">
+        <form id="calculator-form">
+            <label for="num1">Enter the first number:</label>
+            <input type="number" id="num1" required>
+            <br><br>
+            <label for="num2">Enter the second number:</label>
+            <input type="number" id="num2" required>
+            <br><br>
+            <button type="button" id="multiply-button">Multiply</button>
+            <button type="button" id="divide-button">Divide</button>
+        </form>
+        <h2>The Result is :</h2>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Function to calculate multiplication
+        function multiply() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const result = num1 * num2;
+            document.getElementById("result").textContent = `Result: ${num1} * ${num2} = ${result}`;
+        }
+
+        // Function to calculate division
+        function divide() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (num2 === 0) {
+                document.getElementById("result").textContent = "Cannot divide by zero.";
+            } else {
+                const result = num1 / num2;
+                document.getElementById("result").textContent = `Result: ${num1} / ${num2} = ${result}`;
+            }
+        }
+
+        // Event listeners for the buttons
+        document.getElementById("multiply-button").addEventListener("click", multiply);
+        document.getElementById("divide-button").addEventListener("click", divide);
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date and Time in IST and GMT</title>
+</head>
+<body>
+    <h1>Current Date and Time</h1>
+    <button id="showTimeButton">Show Time</button><br><br><br>
+    <button id="showDateButton">Show Date</button>
+    <p id="datetime"></p>
+
+    <script>
+        function updateDateTime(timeZone) {
+            const now = new Date();
+            const options = { timeZone: timeZone, timeZoneName: 'short' };
+            const formattedDateTime = now.toLocaleString('en-US', options);
+            return formattedDateTime;
+        }
+
+        function displayTimeInIST() {
+            const istTime = updateDateTime('Asia/Kolkata'); // IST time zone
+            document.getElementById('datetime').textContent = `IST Time: ${istTime}`;
+        }
+
+        function displayDateInGMT() {
+            const gmtDate = updateDateTime('GMT'); // GMT time zone
+            document.getElementById('datetime').textContent = `GMT Date: ${gmtDate}`;
+        }
+
+        document.getElementById('showTimeButton').addEventListener('click', displayTimeInIST);
+        document.getElementById('showDateButton').addEventListener('click', displayDateInGMT);
+    </script>
+</body>
+</html>
